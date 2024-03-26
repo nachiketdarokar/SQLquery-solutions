@@ -136,6 +136,9 @@ from artist ar
 left join album al on al.artist_id=ar.id and al.year>=1980 and al.year<2000
 where al.year is NOT null;
 
+---Q19.Make a list of artist name starting with 'A'.
+select name from  artist
+where name like 'A%';
 
 
 
