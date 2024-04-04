@@ -66,11 +66,11 @@ set @state='maharashtra';
 set @salary=100000;
 set @gender=0;
 
-insert into employee
-values (@id,@name,@age,@state,@salary
+insert into employee (id, name, age, state, salary, gender)
+values (@id,@name,@age,@state,@salary,
 case @gender
-when 0 then 'M'
-when 1 then 'F'
+	when 0 then 'M'
+	when 1 then 'F'
 end);
 select * from employee;
 
