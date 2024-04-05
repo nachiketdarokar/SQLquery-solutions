@@ -105,3 +105,29 @@ delimiter ;
 call insrow2(12,"achu",56,'male','nagpur','cold',23);
 
 
+#Let’s create a stored procedure to extract and display the maximum room charge taken.
+delimiter &&
+create procedure maxcharge(out x int)
+begin 
+select max(room_charge) from bills;
+end &&
+delimiter ;
+call maxcharge(@m);
+
+
+#Let’s create a stored procedure to extract the amount of laboratory bill in ‘var1’ and 
+#display the amount given by patient of patient id ‘var1’.
+delimiter &&
+create procedure billpay3(inout var1 int)
+begin 
+select amount into var1 from laboratory
+where lan_no=var1;
+end &&
+delimiter ;
+set @m=10;
+call billpay3(10);
+select @m;
+
+
+#DROP the stored procedure
+drop procedure maxcharge;
