@@ -27,3 +27,19 @@ rollback;
 #Q4. Delete a row in the table and rollback it.
 delete from property where no_of_flats>100;
 rollback;
+
+#Q5. Insert certain rows to the table and create a savepoint and rollback to this savepoint again after 
+#inserting another row.
+insert into property values(13,'Gokuldham',14,12,1350);
+savepoint n;
+insert into property values(14,'ram',15,13,1250);
+rollback to n;
+
+
+/*Q6. Delete records having floors greater than equal to 10 and create a savepoint. 
+Insert another row after this and rollback to the savepoint created above.*/
+delete from property where no_of_floors>10;
+select *from property;
+savepoint d1;
+insert into property values (14,'Mystic',10,12,3000);
+rollback to d1;
